@@ -85,4 +85,8 @@ export class SqliteService {
       }
     }
   }
+
+  getDb() {
+    return this.platform === 'web' ? this.sqlJsDb : this.db;
+  }
 }
