@@ -3,8 +3,9 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header>Inbox</ion-list-header>
-          <ion-note>hi&#64;ionicframework.com</ion-note>
+          <ion-list-header>Menu</ion-list-header>
+          <br><br>
+          <!-- <ion-note>hi&#64;ionicframework.com</ion-note> -->
 
           @for (p of appPages; track p; let i = $index) {
             <ion-menu-toggle auto-hide="false">
@@ -18,13 +19,13 @@
 
         <ion-list id="labels-list">
           <ion-list-header>Labels</ion-list-header>
-
+<!--
           @for (label of labels; track label) {
             <ion-item lines="none">
               <ion-icon aria-hidden="true" slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
               <ion-label>{{ label }}</ion-label>
             </ion-item>
-          }
+          } -->
         </ion-list>
       </ion-content>
     </ion-menu>

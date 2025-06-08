@@ -11,4 +11,10 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./folder/folder.page').then((m) => m.FolderPage),
   },
+  {
+    path: 'start',
+    loadComponent: () =>
+      import('./components/start/start.component').then((m) => m.StartComponent),
+  },
+
 ];
