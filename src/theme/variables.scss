@@ -1,2 +1,49 @@
-// For information on how to create your own theme, please see:
-// http://ionicframework.com/docs/theming/
+:root {
+  /** Primary - azul celeste */
+  --ion-color-primary: #40c9ff;
+  --ion-color-primary-rgb: 64, 201, 255;
+  --ion-color-primary-contrast: #000000;
+  --ion-color-primary-contrast-rgb: 0, 0, 0;
+  --ion-color-primary-shade: #38b1e0;
+  --ion-color-primary-tint: #57d1ff;
+
+  /** Secondary - fucsia neón */
+  --ion-color-secondary: #e81cff;
+  --ion-color-secondary-rgb: 232, 28, 255;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #cb00e2;
+  --ion-color-secondary-tint: #ed47ff;
+
+  /** Tertiary - turquesa */
+  --ion-color-tertiary: #00dbde;
+  --ion-color-tertiary-rgb: 0, 219, 222;
+  --ion-color-tertiary-contrast: #000000;
+  --ion-color-tertiary-contrast-rgb: 0, 0, 0;
+  --ion-color-tertiary-shade: #00c2c5;
+  --ion-color-tertiary-tint: #1ae1e3;
+
+  /** Success - verde lima brillante */
+  --ion-color-success: #39ff14;
+  --ion-color-success-rgb: 57, 255, 20;
+  --ion-color-success-contrast: #000000;
+  --ion-color-success-contrast-rgb: 0, 0, 0;
+  --ion-color-success-shade: #32e012;
+  --ion-color-success-tint: #50ff33;
+
+  /** Danger - rojo neón */
+  --ion-color-danger: #ff0055;
+  --ion-color-danger-rgb: 255, 0, 85;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #e0004b;
+  --ion-color-danger-tint: #ff2670;
+
+  /** Warning - amarillo eléctrico */
+  --ion-color-warning: #fff200;
+  --ion-color-warning-rgb: 255, 242, 0;
+  --ion-color-warning-contrast: #000000;
+  --ion-color-warning-contrast-rgb: 0, 0, 0;
+  --ion-color-warning-shade: #e0d600;
+  --ion-color-warning-tint: #fff433;
+}

@@ -7,6 +7,29 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-content>
+
 <p class="date">
   Día {{ currentDate | date: 'dd/MM/yyyy' }} - {{ currentTime | date: 'HH:mm:ss' }}
 </p>
+
+<p class="title">
+ Rutinas
+</p>
+ <div class="buttonContainer">
+    <button class="buttonMenu">Tus rutinas</button>
+    <button class="buttonMenu">Crear rutina</button>
+  </div>
+ <br>
+  <p class="title">
+  Entrenamientos
+  </p>
+  <div class="buttonContainer">
+    <button class="buttonMenu">Comenzar entrenamiento</button>
+    <button class="buttonMenu">Histórico entrenamintos</button>
+  </div>
+
+
+</ion-content>
+
+
