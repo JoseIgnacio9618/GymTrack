@@ -6,6 +6,7 @@ import { addIcons } from 'ionicons';
 import { mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline, trashSharp, warningOutline, warningSharp, bookmarkOutline, bookmarkSharp } from 'ionicons/icons';
 import { Platform } from '@ionic/angular';
 import { SqliteService } from './services/sql-lite.service';
+import { AppTranslateService } from '../app/services/translate.service';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,9 @@ export class AppComponent {
 
   ];
   public labels = [];
-  constructor(public platform: Platform, private sqliteService: SqliteService) {
+  constructor(public platform: Platform,
+     private sqliteService: SqliteService
+     , private translateService: AppTranslateService) {
     addIcons({ mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline, trashSharp, warningOutline, warningSharp, bookmarkOutline, bookmarkSharp });
     this.initializeApp()
   }

@@ -18,11 +18,11 @@
 </p>
  <div class="buttonContainer">
     <button class="buttonMenu">Tus rutinas</button>
-    <button class="buttonMenu">Crear rutina</button>
+    <button class="buttonMenu" (click)="goTo('create-routine')">Crear rutina</button>
   </div>
  <br>
   <p class="title">
-  Entrenamientos
+  {{ 'TRAININGS' | translate }}
   </p>
   <div class="buttonContainer">
     <button class="buttonMenu">Comenzar entrenamiento</button>

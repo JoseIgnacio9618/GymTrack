@@ -16,5 +16,9 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./components/start/start.component').then((m) => m.StartComponent),
   },
+  {
+    path: 'create-routine',
+    loadComponent: () => import('./components/create-routine/create-routine.page').then( m => m.CreateRoutinePage)
+  },
 
 ];
