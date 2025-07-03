@@ -1,5 +1,5 @@
 # GymTrack
 
 Proximos objetivos: 
-      - Menu principal
+      - Claves de idiomas pendientes
       - Ventana de creacion de rutinas
