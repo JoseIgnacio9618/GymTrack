@@ -43,37 +43,6 @@ export class SqliteService {
     }
   }
 
-  async addExercise(name: string, repetitions: number): Promise<void> {
-    const query = 'INSERT INTO exercises (name, repetitions) VALUES (?, ?)';
-    if (this.platform === 'web') {
-      if (!this.sqlJsDb) return;
-      this.sqlJsDb.run(query, [name, repetitions]);
-    } else {
-      if (!this.db) return;
-      await this.db.run(query, [name, repetitions]);
-    }
-  }
-
-  async getExercises(): Promise<any[]> {
-    const query = 'SELECT * FROM exercises';
-    if (this.platform === 'web') {
-      if (!this.sqlJsDb) return [];
-      const result = this.sqlJsDb.exec(query);
-      if (result.length > 0) {
-        const rows = result[0].values;
-        const columns = result[0].columns;
-        return rows.map((row: any) =>
-          Object.fromEntries(row.map((val: any, i: number) => [columns[i], val]))
-        );
-      }
-      return [];
-    } else {
-      if (!this.db) return [];
-      const result = await this.db.query(query);
-      return result.values || [];
-    }
-  }
-
   async closeDB(): Promise<void> {
     if (this.platform === 'web') {
       this.sqlJsDb = null;
