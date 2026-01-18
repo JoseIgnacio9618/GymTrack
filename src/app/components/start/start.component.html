@@ -9,27 +9,36 @@
 
 <ion-content>
 
-<p class="date">
-  Día {{ currentDate | date: 'dd/MM/yyyy' }} - {{ currentTime | date: 'HH:mm:ss' }}
-</p>
-
-<p class="title">
- Rutinas
-</p>
- <div class="buttonContainer">
-    <button class="buttonMenu">Tus rutinas</button>
-    <button class="buttonMenu" (click)="goTo('create-routine')">Crear rutina</button>
-  </div>
- <br>
-  <p class="title">
-  {{ 'TRAININGS' | translate }}
+  <p class="date">
+    Día {{ currentDate | date: 'dd/MM/yyyy' }} - {{ currentTime | date: 'HH:mm:ss' }}
   </p>
-  <div class="buttonContainer">
-    <button class="buttonMenu">Comenzar entrenamiento</button>
-    <button class="buttonMenu">Histórico entrenamintos</button>
-  </div>
 
+  <ng-container *ngIf="user; else loginBlock">
+    <p class="title">
+      Rutinas
+    </p>
+    <div class="buttonContainer">
+      <button class="buttonMenu">Tus rutinas</button>
+      <button class="buttonMenu" (click)="goTo('create-routine')">Crear rutina</button>
+    </div>
+    <br>
+    <p class="title">
+      {{ 'TRAININGS' | translate }}
+    </p>
+    <div class="buttonContainer">
+      <button class="buttonMenu">Comenzar entrenamiento</button>
+      <button class="buttonMenu">Histórico entrenamientos</button>
+    </div>
+  </ng-container>
+
+  <ng-template #loginBlock>
+    <p class="title">
+      Por favor, inicia sesión para ver tus rutinas y entrenamientos.
+    </p>
+    <div class="buttonContainer">
+      <button class="buttonMenu" (click)="goTo('login')">Iniciar sesión</button>
+      <button class="buttonMenu" (click)="goTo('register')">Registrarse</button>
+    </div>
+  </ng-template>
 
 </ion-content>
-
-

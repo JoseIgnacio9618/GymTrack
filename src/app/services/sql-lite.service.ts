@@ -26,14 +26,18 @@ export class SqliteService {
   async initDB(): Promise<void> {
     try {
       if (this.platform === 'web') {
-        const SQL = await initSqlJs({
-          locateFile: file => `assets/${file}`,
-        });
+        const SQL = await initSqlJs({ locateFile: (file) => `assets/${file}` });
         this.sqlJsDb = new SQL.Database();
         this.sqlJsDb.run(createTablesSQL);
         console.log('sql.js DB initialized');
       } else {
-        this.db = await this.sqlite.createConnection(this.dbName, false, 'no-encryption', 1, false);
+        this.db = await this.sqlite.createConnection(
+          this.dbName,
+          false,
+          'no-encryption',
+          1,
+          false
+        );
         await this.db.open();
         await this.db.execute(createTablesSQL);
         console.log('Capacitor SQLite DB initialized');
@@ -55,7 +59,40 @@ export class SqliteService {
     }
   }
 
-  getDb() {
-    return this.platform === 'web' ? this.sqlJsDb : this.db;
+  // ------------------------ MÉTODOS GENÉRICOS ------------------------
+
+  /**
+   * Ejecuta un SELECT y devuelve un array de filas.
+   */
+  async execQuery(sql: string, params: any[] = []): Promise<any[]> {
+    const db = this.platform === 'web' ? this.sqlJsDb : this.db;
+    if (!db) return [];
+
+    if ('exec' in db) {
+      // sql.js
+      const res = db.exec(sql);
+      if (!res.length) return [];
+      return res[0].values;
+    } else {
+      // Capacitor SQLite
+      const res = await db.query(sql, params);
+      return res.values ?? [];
+    }
+  }
+
+  /**
+   * Ejecuta un comando INSERT, UPDATE o DELETE.
+   */
+  async run(sql: string, params: any[] = []): Promise<void> {
+    const db = this.platform === 'web' ? this.sqlJsDb : this.db;
+    if (!db) return;
+
+    if ('run' in db) {
+      // sql.js
+      (db as SQLJsDatabase).run(sql);
+    } else {
+      // Capacitor SQLite
+      await (db as SQLiteDBConnection).run(sql, params);
+    }
   }
 }
