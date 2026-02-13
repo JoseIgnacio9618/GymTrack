@@ -13,7 +13,7 @@
     Día {{ currentDate | date: 'dd/MM/yyyy' }} - {{ currentTime | date: 'HH:mm:ss' }}
   </p>
 
-  <ng-container *ngIf="user; else loginBlock">
+  <ng-container >
     <p class="title">
       Rutinas
     </p>
@@ -31,7 +31,7 @@
     </div>
   </ng-container>
 
-  <ng-template #loginBlock>
+ <ng-template hidden>
     <p class="title">
       Por favor, inicia sesión para ver tus rutinas y entrenamientos.
     </p>

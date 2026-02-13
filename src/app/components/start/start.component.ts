@@ -3,9 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { AppTranslateService } from '../../services/translate.service';
-import { UserCrudService } from 'src/app/services/cruds/user-crud.service';
-import { User } from 'src/app/models/User';
-
 
 @Component({
   selector: 'app-start',
@@ -16,18 +13,14 @@ import { User } from 'src/app/models/User';
 
 })
 export class StartComponent  implements OnInit {
-
-  user: User | undefined = undefined
   currentDate: Date = new Date();
   currentTime: Date = new Date();
   private timerId: any;
   constructor(
-    private navCtrl: NavController,
-    private userService: UserCrudService
+    private navCtrl: NavController
   ) { }
 
   ngOnInit(): void {
-    this.user = this.userService.getCurrentUser();
 
     // Actualiza la fecha y hora cada segundo
     this.timerId = setInterval(() => {
