@@ -6,7 +6,7 @@ import {
   SQLiteDBConnection,
 } from '@capacitor-community/sqlite';
 import initSqlJs, { Database as SQLJsDatabase } from 'sql.js';
-import { createTablesSQL } from '../migrations/create-tables';
+import { createTablesSQL } from '../db/migrations/create-tables';
 
 @Injectable({
   providedIn: 'root',

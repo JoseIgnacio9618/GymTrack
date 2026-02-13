@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SqlLiteService } from './sql-lite.service';
+import { SqliteService } from './sql-lite.service';
 
 describe('SqlLiteService', () => {
-  let service: SqlLiteService;
+  let service: SqliteService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(SqlLiteService);
+    service = TestBed.inject(SqliteService);
   });
 
   it('should be created', () => {
