@@ -1,6 +1,6 @@
 # GymTrack
 
 Proximos objetivos: 
-      - Sistema de login
+      - Encriptacion de password para usuarios.
       - Claves de idiomas pendientes
       - Ventana de creacion de rutinas
