@@ -1,0 +1,74 @@
+.auth-container {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.app-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 0.25rem;
+  background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--ion-color-medium);
+  font-size: 14px;
+  margin-bottom: 1.5rem;
+}
+
+ion-segment {
+  margin-bottom: 1.5rem;
+  --background: var(--ion-color-light);
+  border-radius: 10px;
+  padding: 4px;
+
+  ion-segment-button {
+    --indicator-color: var(--ion-color-primary);
+    --color-checked: var(--ion-color-primary);
+    text-transform: none;
+    font-weight: 600;
+    min-height: 44px;
+  }
+}
+
+.auth-form {
+  ion-item {
+    --background: var(--ion-color-light);
+    --border-radius: 10px;
+    border-radius: 10px;
+    margin-bottom: 4px;
+  }
+
+  .error-text,
+  .error-message {
+    display: block;
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+    padding-left: 4px;
+  }
+
+  .error-message p {
+    margin: 0.5rem 0;
+  }
+}
+
+.submit-btn {
+  --background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-secondary));
+  --background-hover: linear-gradient(135deg, var(--ion-color-primary-shade), var(--ion-color-secondary-shade));
+  --background-activated: linear-gradient(135deg, var(--ion-color-primary-shade), var(--ion-color-secondary-shade));
+  --border-radius: 10px;
+  font-weight: 600;
+  text-transform: none;
+  margin-top: 1.5rem;
+  height: 48px;
+}
+
+.submit-btn ion-spinner {
+  margin-right: 8px;
+}
