@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../models/users.model';
 import { UserService } from './users.service';
-import { SqliteService } from './sql-lite.service';
 
 const STORAGE_KEY_USER_ID = 'gymtrack_user_id';
 const STORAGE_KEY_USER_BACKUP = 'gymtrack_user_backup';
@@ -14,10 +13,7 @@ export class AuthService {
   private currentUser$ = new BehaviorSubject<User | null>(null);
   private initDone = false;
 
-  constructor(
-    private userService: UserService,
-    private sqliteService: SqliteService,
-  ) {}
+  constructor(private userService: UserService) {}
 
   get currentUser(): Observable<User | null> {
     return this.currentUser$.asObservable();
@@ -32,12 +28,10 @@ export class AuthService {
   }
 
   /**
-   * Restaura la sesión desde el almacenamiento. Espera a que la BD esté lista para evitar
-   * que el guard corra antes que initDB() y getById devuelva null.
+   * Restaura la sesión desde el almacenamiento (userId + backup desde backend/localStorage).
    */
   async initSession(): Promise<void> {
     if (this.initDone) return;
-    await this.sqliteService.whenReady();
     const storedId = this.getStoredUserId();
     if (storedId) {
       let user = await this.userService.getById(storedId);

@@ -5,7 +5,6 @@ import { IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonM
 import { addIcons } from 'ionicons';
 import { mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline, trashSharp, warningOutline, warningSharp, bookmarkOutline, bookmarkSharp, logOutOutline } from 'ionicons/icons';
 import { Platform } from '@ionic/angular';
-import { SqliteService } from './services/sql-lite.service';
 import { AppTranslateService } from './services/translate.service';
 import { AuthService } from './services/auth.service';
 
@@ -25,7 +24,6 @@ export class AppComponent {
 
   constructor(
     public platform: Platform,
-    private sqliteService: SqliteService,
     private translateService: AppTranslateService,
     public authService: AuthService,
     private router: Router,
@@ -42,7 +40,6 @@ export class AppComponent {
   async initializeApp() {
     await this.platform.ready();
     try {
-      await this.sqliteService.initDB();
       await this.authService.initSession();
     } catch (err) {
       console.error('Init error:', err);

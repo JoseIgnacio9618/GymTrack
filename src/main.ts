@@ -5,14 +5,9 @@ import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalo
 
 import { AppComponent } from './app/app.component';
 import { routes } from './app/app.routes';
-import { defineCustomElements } from 'jeep-sqlite/loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { createTranslateLoader } from './app/translate.loader';
-
-if (window && customElements && !customElements.get('jeep-sqlite')) {
-  defineCustomElements(window);
-}
 
 bootstrapApplication(AppComponent, {
   providers: [
