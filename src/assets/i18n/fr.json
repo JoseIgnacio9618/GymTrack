@@ -1,0 +1,65 @@
+{
+  "COMMON": {
+    "LOADING": "Chargement...",
+    "LANGUAGE": "Langue"
+  },
+  "MENU": {
+    "TITLE": "Menu",
+    "HOME": "Accueil",
+    "LOGOUT": "Déconnexion"
+  },
+  "AUTH": {
+    "APP_TITLE": "GymTrack",
+    "SUBTITLE": "Entraînez-vous et suivez vos progrès",
+    "LOGIN": "Connexion",
+    "REGISTER": "Créer un compte",
+    "NAME": "Nom",
+    "NAME_PLACEHOLDER": "Votre nom",
+    "EMAIL": "E-mail",
+    "EMAIL_PLACEHOLDER": "email@exemple.com",
+    "PASSWORD": "Mot de passe",
+    "PASSWORD_PLACEHOLDER": "••••••••",
+    "ERROR_NAME_REQUIRED": "Le nom est obligatoire (min. 2 caractères)",
+    "ERROR_EMAIL_INVALID": "Entrez un e-mail valide",
+    "ERROR_PASSWORD_REQUIRED": "Le mot de passe est obligatoire",
+    "ERROR_PASSWORD_MIN": "Minimum 4 caractères",
+    "ERROR_LOGIN": "E-mail ou mot de passe incorrect.",
+    "ERROR_SESSION_STORAGE": "Impossible d'enregistrer la session. Vérifiez le stockage du navigateur.",
+    "ERROR_FIELDS_REQUIRED": "Nom, e-mail et mot de passe sont obligatoires.",
+    "ERROR_EMAIL_EXISTS": "Un compte avec cet e-mail existe déjà.",
+    "ERROR_REGISTER_SESSION": "Compte créé mais impossible d'enregistrer la session. Connectez-vous manuellement."
+  },
+  "START": {
+    "TITLE": "Accueil",
+    "DAY": "Jour",
+    "ROUTINES": "Routines",
+    "YOUR_ROUTINES": "Vos routines",
+    "CREATE_ROUTINE": "Créer une routine",
+    "TRAININGS": "Entraînements",
+    "START_TRAINING": "Commencer l'entraînement",
+    "TRAINING_HISTORY": "Historique des entraînements"
+  },
+  "CREATE_ROUTINE": {
+    "TITLE": "Créer une routine"
+  },
+  "LANG": {
+    "ES": "Español",
+    "EN": "English",
+    "FR": "Français",
+    "DE": "Deutsch",
+    "IT": "Italiano",
+    "PT": "Português",
+    "NL": "Nederlands",
+    "PL": "Polski",
+    "RU": "Русский",
+    "JA": "日本語",
+    "ZH": "中文",
+    "AR": "العربية",
+    "TR": "Türkçe",
+    "UK": "Українська",
+    "CA": "Català",
+    "EL": "Ελληνικά",
+    "HI": "हिन्दी",
+    "KO": "한국어"
+  }
+}

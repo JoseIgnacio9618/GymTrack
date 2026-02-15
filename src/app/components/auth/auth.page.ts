@@ -17,6 +17,7 @@ import {
   IonText,
   IonSpinner,
 } from '@ionic/angular/standalone';
+import { TranslateModule } from '@ngx-translate/core';
 import { AuthService } from '../../services/auth.service';
 
 type AuthMode = 'login' | 'register';
@@ -29,6 +30,7 @@ type AuthMode = 'login' | 'register';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    TranslateModule,
     IonContent,
     IonHeader,
     IonTitle,
@@ -52,7 +54,7 @@ export class AuthPage implements OnInit, OnDestroy {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router
   ) {
     this.form = this.fb.group({

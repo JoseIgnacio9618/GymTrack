@@ -3,31 +3,31 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Inicio</ion-title>
+    <ion-title>{{ 'START.TITLE' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
   <p class="date">
-    Día {{ currentDate | date: 'dd/MM/yyyy' }} - {{ currentTime | date: 'HH:mm:ss' }}
+    {{ 'START.DAY' | translate }} {{ currentDate | date: 'dd/MM/yyyy' }} - {{ currentTime | date: 'HH:mm:ss' }}
   </p>
 
-  <ng-container >
+  <ng-container>
     <p class="title">
-      Rutinas
+      {{ 'START.ROUTINES' | translate }}
     </p>
     <div class="buttonContainer">
-      <button class="buttonMenu">Tus rutinas</button>
-      <button class="buttonMenu" (click)="goTo('create-routine')">Crear rutina</button>
+      <button class="buttonMenu">{{ 'START.YOUR_ROUTINES' | translate }}</button>
+      <button class="buttonMenu" (click)="goTo('create-routine')">{{ 'START.CREATE_ROUTINE' | translate }}</button>
     </div>
     <br>
     <p class="title">
-      {{ 'TRAININGS' | translate }}
+      {{ 'START.TRAININGS' | translate }}
     </p>
     <div class="buttonContainer">
-      <button class="buttonMenu">Comenzar entrenamiento</button>
-      <button class="buttonMenu">Histórico entrenamientos</button>
+      <button class="buttonMenu">{{ 'START.START_TRAINING' | translate }}</button>
+      <button class="buttonMenu">{{ 'START.TRAINING_HISTORY' | translate }}</button>
     </div>
   </ng-container>
 

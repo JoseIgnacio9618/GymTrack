@@ -1,5 +1,65 @@
 {
-  "HELLO": "Hello",
-  "WELCOME": "Welcome to my app",
-  "TRAININGS": "Trainings"
+  "COMMON": {
+    "LOADING": "Loading...",
+    "LANGUAGE": "Language"
+  },
+  "MENU": {
+    "TITLE": "Menu",
+    "HOME": "Home",
+    "LOGOUT": "Log out"
+  },
+  "AUTH": {
+    "APP_TITLE": "GymTrack",
+    "SUBTITLE": "Train and track your progress",
+    "LOGIN": "Log in",
+    "REGISTER": "Create account",
+    "NAME": "Name",
+    "NAME_PLACEHOLDER": "Your name",
+    "EMAIL": "Email",
+    "EMAIL_PLACEHOLDER": "email@example.com",
+    "PASSWORD": "Password",
+    "PASSWORD_PLACEHOLDER": "••••••••",
+    "ERROR_NAME_REQUIRED": "Name is required (min. 2 characters)",
+    "ERROR_EMAIL_INVALID": "Enter a valid email",
+    "ERROR_PASSWORD_REQUIRED": "Password is required",
+    "ERROR_PASSWORD_MIN": "Minimum 4 characters",
+    "ERROR_LOGIN": "Incorrect email or password.",
+    "ERROR_SESSION_STORAGE": "Could not save session. Check browser storage.",
+    "ERROR_FIELDS_REQUIRED": "Name, email and password are required.",
+    "ERROR_EMAIL_EXISTS": "An account with this email already exists.",
+    "ERROR_REGISTER_SESSION": "Account created but could not save session. Please log in manually."
+  },
+  "START": {
+    "TITLE": "Home",
+    "DAY": "Day",
+    "ROUTINES": "Routines",
+    "YOUR_ROUTINES": "Your routines",
+    "CREATE_ROUTINE": "Create routine",
+    "TRAININGS": "Trainings",
+    "START_TRAINING": "Start training",
+    "TRAINING_HISTORY": "Training history"
+  },
+  "CREATE_ROUTINE": {
+    "TITLE": "Create routine"
+  },
+  "LANG": {
+    "ES": "Español",
+    "EN": "English",
+    "FR": "Français",
+    "DE": "Deutsch",
+    "IT": "Italiano",
+    "PT": "Português",
+    "NL": "Nederlands",
+    "PL": "Polski",
+    "RU": "Русский",
+    "JA": "日本語",
+    "ZH": "中文",
+    "AR": "العربية",
+    "TR": "Türkçe",
+    "UK": "Українська",
+    "CA": "Català",
+    "EL": "Ελληνικά",
+    "HI": "हिन्दी",
+    "KO": "한국어"
+  }
 }

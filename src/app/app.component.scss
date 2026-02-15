@@ -133,3 +133,58 @@ ion-note {
 ion-item.selected {
   --color: var(--ion-color-primary);
 }
+
+// Selector de idioma flotante en esquina (no molesta)
+.lang-float {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px 6px 12px;
+  background: var(--ion-card-background, #fff);
+  border-radius: 999px;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--ion-color-light-shade, rgba(0, 0, 0, 0.08));
+  backdrop-filter: blur(8px);
+
+  ion-icon {
+    font-size: 1.25rem;
+    color: var(--ion-color-primary);
+    flex-shrink: 0;
+  }
+
+  .lang-float-select {
+    min-width: 0;
+    max-width: 72px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    --padding-start: 4px;
+    --padding-end: 4px;
+    --min-height: 28px;
+
+    &::part(container) {
+      border: none;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    &::part(text) {
+      color: var(--ion-text-color);
+    }
+
+    &::part(icon) {
+      opacity: 0.7;
+      width: 16px;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .lang-float {
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.3);
+    border-color: var(--ion-color-light-shade, rgba(255, 255, 255, 0.1));
+  }
+}

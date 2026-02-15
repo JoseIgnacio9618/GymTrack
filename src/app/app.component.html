@@ -2,27 +2,27 @@
   @if (!appReady) {
     <div class="app-loading">
       <ion-spinner name="crescent"></ion-spinner>
-      <p>Cargando...</p>
+      <p>{{ 'COMMON.LOADING' | translate }}</p>
     </div>
   } @else if (authService.currentUser | async) {
     <ion-split-pane contentId="main-content">
       <ion-menu contentId="main-content" type="overlay">
         <ion-content>
           <ion-list id="inbox-list">
-            <ion-list-header>Menú</ion-list-header>
+            <ion-list-header>{{ 'MENU.TITLE' | translate }}</ion-list-header>
             <br><br>
             @for (p of appPages; track p) {
               <ion-menu-toggle auto-hide="false">
                 <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
                   <ion-icon aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-                  <ion-label>{{ p.title }}</ion-label>
+                  <ion-label>{{ p.titleKey | translate }}</ion-label>
                 </ion-item>
               </ion-menu-toggle>
             }
             <ion-menu-toggle auto-hide="false">
               <ion-item button lines="none" detail="false" (click)="logout()">
                 <ion-icon aria-hidden="true" slot="start" name="log-out-outline"></ion-icon>
-                <ion-label>Cerrar sesión</ion-label>
+                <ion-label>{{ 'MENU.LOGOUT' | translate }}</ion-label>
               </ion-item>
             </ion-menu-toggle>
           </ion-list>
@@ -32,5 +32,21 @@
     </ion-split-pane>
   } @else {
     <ion-router-outlet id="main-content"></ion-router-outlet>
+  }
+
+  @if (appReady) {
+    <div class="lang-float">
+      <ion-icon name="language-outline" aria-hidden="true"></ion-icon>
+      <ion-select
+        [value]="translateService.getCurrentLanguage()"
+        (ionChange)="translateService.setLanguage($any($event).detail.value)"
+        interface="popover"
+        class="lang-float-select"
+      >
+        @for (lang of languages; track lang.code) {
+          <ion-select-option [value]="lang.code">{{ lang.labelKey | translate }}</ion-select-option>
+        }
+      </ion-select>
+    </div>
   }
 </ion-app>

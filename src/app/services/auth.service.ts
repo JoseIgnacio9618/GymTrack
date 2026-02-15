@@ -55,10 +55,10 @@ export class AuthService {
   async login(email: string, password: string): Promise<{ success: true; user: User } | { success: false; message: string }> {
     const user = await this.userService.validateUser(email, password);
     if (!user) {
-      return { success: false, message: 'Email o contraseña incorrectos.' };
+      return { success: false, message: 'AUTH.ERROR_LOGIN' };
     }
     if (!this.setStoredUserId(user.id)) {
-      return { success: false, message: 'No se pudo guardar la sesión. Revisa el almacenamiento del navegador.' };
+      return { success: false, message: 'AUTH.ERROR_SESSION_STORAGE' };
     }
     this.setBackupUser(user);
     this.currentUser$.next(user);
@@ -74,12 +74,12 @@ export class AuthService {
     const trimmedPassword = password?.trim();
 
     if (!trimmedName || !trimmedEmail || !trimmedPassword) {
-      return { success: false, message: 'Nombre, email y contraseña son obligatorios.' };
+      return { success: false, message: 'AUTH.ERROR_FIELDS_REQUIRED' };
     }
 
     const existing = await this.userService.getByEmail(trimmedEmail);
     if (existing) {
-      return { success: false, message: 'Ya existe una cuenta con ese email.' };
+      return { success: false, message: 'AUTH.ERROR_EMAIL_EXISTS' };
     }
 
     const user = await this.userService.create({
@@ -88,7 +88,7 @@ export class AuthService {
       password: trimmedPassword,
     });
     if (!this.setStoredUserId(user.id)) {
-      return { success: false, message: 'Cuenta creada pero no se pudo guardar la sesión. Inicia sesión manualmente.' };
+      return { success: false, message: 'AUTH.ERROR_REGISTER_SESSION' };
     }
     this.setBackupUser(user);
     this.currentUser$.next(user);

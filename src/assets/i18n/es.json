@@ -1,5 +1,65 @@
 {
-  "HELLO": "Hola",
-  "WELCOME": "Bienvenido a mi app",
-  "TRAININGS": "Entrenamientos"
+  "COMMON": {
+    "LOADING": "Cargando...",
+    "LANGUAGE": "Idioma"
+  },
+  "MENU": {
+    "TITLE": "Menú",
+    "HOME": "Inicio",
+    "LOGOUT": "Cerrar sesión"
+  },
+  "AUTH": {
+    "APP_TITLE": "GymTrack",
+    "SUBTITLE": "Entrena y sigue tu progreso",
+    "LOGIN": "Iniciar sesión",
+    "REGISTER": "Crear cuenta",
+    "NAME": "Nombre",
+    "NAME_PLACEHOLDER": "Tu nombre",
+    "EMAIL": "Email",
+    "EMAIL_PLACEHOLDER": "correo@ejemplo.com",
+    "PASSWORD": "Contraseña",
+    "PASSWORD_PLACEHOLDER": "••••••••",
+    "ERROR_NAME_REQUIRED": "El nombre es obligatorio (mín. 2 caracteres)",
+    "ERROR_EMAIL_INVALID": "Introduce un email válido",
+    "ERROR_PASSWORD_REQUIRED": "La contraseña es obligatoria",
+    "ERROR_PASSWORD_MIN": "Mínimo 4 caracteres",
+    "ERROR_LOGIN": "Email o contraseña incorrectos.",
+    "ERROR_SESSION_STORAGE": "No se pudo guardar la sesión. Revisa el almacenamiento del navegador.",
+    "ERROR_FIELDS_REQUIRED": "Nombre, email y contraseña son obligatorios.",
+    "ERROR_EMAIL_EXISTS": "Ya existe una cuenta con ese email.",
+    "ERROR_REGISTER_SESSION": "Cuenta creada pero no se pudo guardar la sesión. Inicia sesión manualmente."
+  },
+  "START": {
+    "TITLE": "Inicio",
+    "DAY": "Día",
+    "ROUTINES": "Rutinas",
+    "YOUR_ROUTINES": "Tus rutinas",
+    "CREATE_ROUTINE": "Crear rutina",
+    "TRAININGS": "Entrenamientos",
+    "START_TRAINING": "Comenzar entrenamiento",
+    "TRAINING_HISTORY": "Histórico entrenamientos"
+  },
+  "CREATE_ROUTINE": {
+    "TITLE": "Crear rutina"
+  },
+  "LANG": {
+    "ES": "Español",
+    "EN": "English",
+    "FR": "Français",
+    "DE": "Deutsch",
+    "IT": "Italiano",
+    "PT": "Português",
+    "NL": "Nederlands",
+    "PL": "Polski",
+    "RU": "Русский",
+    "JA": "日本語",
+    "ZH": "中文",
+    "AR": "العربية",
+    "TR": "Türkçe",
+    "UK": "Українська",
+    "CA": "Català",
+    "EL": "Ελληνικά",
+    "HI": "हिन्दी",
+    "KO": "한국어"
+  }
 }

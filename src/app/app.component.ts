@@ -1,30 +1,51 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive, Router } from '@angular/router';
-import { IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterOutlet, IonRouterLink, IonSpinner } from '@ionic/angular/standalone';
+import { IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterOutlet, IonRouterLink, IonSpinner, IonSelect, IonSelectOption } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline, trashSharp, warningOutline, warningSharp, bookmarkOutline, bookmarkSharp, logOutOutline } from 'ionicons/icons';
+import { mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline, trashSharp, warningOutline, warningSharp, bookmarkOutline, bookmarkSharp, logOutOutline, languageOutline } from 'ionicons/icons';
 import { Platform } from '@ionic/angular';
+import { TranslateModule } from '@ngx-translate/core';
 import { AppTranslateService } from './services/translate.service';
 import { AuthService } from './services/auth.service';
+import { LANGUAGES } from './services/translate.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
-  imports: [CommonModule, RouterLink, RouterLinkActive, IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterLink, IonRouterOutlet, IonSpinner],
+  imports: [
+    CommonModule,
+    TranslateModule,
+    RouterLink,
+    RouterLinkActive,
+    IonApp,
+    IonSplitPane,
+    IonMenu,
+    IonContent,
+    IonList,
+    IonListHeader,
+    IonMenuToggle,
+    IonItem,
+    IonIcon,
+    IonLabel,
+    IonRouterLink,
+    IonRouterOutlet,
+    IonSpinner,
+    IonSelect,
+    IonSelectOption,
+  ],
 })
 export class AppComponent {
-  public appPages = [
-    { title: 'Inicio', url: 'start', icon: 'mail' },
-  ];
+  readonly appPages = [{ titleKey: 'MENU.HOME', url: 'start', icon: 'mail' }];
+  readonly languages = LANGUAGES;
   public labels: string[] = [];
   /** Solo se muestra la app cuando la BD y la sesión están listas. */
   appReady = false;
 
   constructor(
     public platform: Platform,
-    private translateService: AppTranslateService,
+    public translateService: AppTranslateService,
     public authService: AuthService,
     private router: Router,
   ) {
@@ -32,7 +53,7 @@ export class AppComponent {
       mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp,
       heartOutline, heartSharp, archiveOutline, archiveSharp,
       trashOutline, trashSharp, warningOutline, warningSharp,
-      bookmarkOutline, bookmarkSharp, logOutOutline,
+      bookmarkOutline, bookmarkSharp, logOutOutline, languageOutline,
     });
     this.initializeApp();
   }
