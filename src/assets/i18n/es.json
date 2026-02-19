@@ -1,11 +1,17 @@
 {
   "COMMON": {
     "LOADING": "Cargando...",
-    "LANGUAGE": "Idioma"
+    "LANGUAGE": "Idioma",
+    "CANCEL": "Cancelar",
+    "ACCEPT": "Aceptar"
   },
   "MENU": {
     "TITLE": "Menú",
     "HOME": "Inicio",
+    "MY_ROUTINES": "Tus rutinas",
+    "CREATE_ROUTINE": "Crear rutina",
+    "TRAININGS": "Entrenamientos",
+    "TRAINING_HISTORY": "Histórico",
     "LOGOUT": "Cerrar sesión"
   },
   "AUTH": {
@@ -40,7 +46,102 @@
     "TRAINING_HISTORY": "Histórico entrenamientos"
   },
   "CREATE_ROUTINE": {
-    "TITLE": "Crear rutina"
+    "TITLE": "Crear rutina",
+    "EDIT_TITLE": "Editar rutina",
+    "ROUTINE_NAME": "Nombre de la rutina",
+    "ROUTINE_NAME_PLACEHOLDER": "Ej. Empuje superior",
+    "DESCRIPTION": "Descripción",
+    "DESCRIPTION_PLACEHOLDER": "Opcional",
+    "EXERCISES": "Ejercicios",
+    "EXERCISE_NAME": "Ejercicio",
+    "EXERCISE_NAME_PLACEHOLDER": "Ej. Press de banca",
+    "EXERCISE_TYPE": "Tipo de ejercicio",
+    "EXERCISE_TYPE_WEIGHT": "Peso",
+    "EXERCISE_TYPE_DURATION": "Resistencia (tiempo)",
+    "EXERCISE_TYPE_DISTANCE_TIME": "Distancia + tiempo",
+    "EXERCISE_TYPE_CHRONO": "Cronometro",
+    "EXERCISE_DESC": "Notas del ejercicio",
+    "EXERCISE_DESC_PLACEHOLDER": "Opcional",
+    "PHOTO_URL": "URL de foto de máquina",
+    "PHOTO_URL_PLACEHOLDER": "https://...",
+    "TAKE_PHOTO": "Tomar foto",
+    "CHOOSE_PHOTO": "Elegir foto",
+    "REMOVE_PHOTO": "Quitar foto",
+    "ADD_EXERCISE": "Añadir ejercicio",
+    "REMOVE_EXERCISE": "Quitar ejercicio",
+    "SHOW_PHOTO": "Foto",
+    "HIDE_PHOTO": "Ocultar foto",
+    "SAVE": "Guardar rutina",
+    "UPDATE": "Actualizar rutina",
+    "ERROR_USER": "No hay sesión activa.",
+    "ERROR_NAME": "El nombre de la rutina es obligatorio (mín. 2 caracteres).",
+    "ERROR_EXERCISE": "Debes añadir al menos un ejercicio con nombre.",
+    "ERROR_UPLOAD_PHOTO": "No se pudo capturar o subir la foto.",
+    "LOAD_ERROR": "No se pudo cargar la rutina.",
+    "SAVE_ERROR": "No se pudo guardar la rutina."
+  },
+  "ROUTINES": {
+    "TITLE": "Tus rutinas",
+    "CREATE_NEW": "Crear nueva rutina",
+    "EMPTY": "Aún no has creado ninguna rutina.",
+    "EXERCISE_COUNT": "Ejercicios",
+    "SHOW_EXERCISES": "Ver ejercicios",
+    "HIDE_EXERCISES": "Ocultar ejercicios",
+    "EDIT": "Editar",
+    "DELETE": "Eliminar",
+    "SHOW_PHOTO": "Foto",
+    "HIDE_PHOTO": "Ocultar foto",
+    "ERROR_USER": "No hay sesión activa.",
+    "ERROR_LOAD": "No se pudieron cargar las rutinas.",
+    "ERROR_DELETE": "No se pudo eliminar la rutina.",
+    "CONFIRM_DELETE": "Seguro que quieres eliminar esta rutina?"
+  },
+  "TRAININGS": {
+    "TITLE": "Entrenamientos",
+    "STATS_TITLE": "Media global",
+    "EXERCISE_TYPE_WEIGHT": "Peso",
+    "EXERCISE_TYPE_DURATION": "Resistencia por tiempo",
+    "EXERCISE_TYPE_DISTANCE_TIME": "Distancia y tiempo",
+    "EXERCISE_TYPE_CHRONO": "Cronometro",
+    "AVG_SETS_PER_TRAINING": "Media de series por entrenamiento",
+    "AVG_WEIGHT_EXERCISE": "Media de peso historica",
+    "AVG_TIME_EXERCISE": "Media de tiempo historica",
+    "AVG_DISTANCE_EXERCISE": "Media de distancia historica",
+    "STAT_TOTAL_TRAININGS": "Entrenamientos",
+    "STAT_TOTAL_SETS": "Series totales",
+    "STAT_AVG_SETS": "Media series",
+    "STAT_AVG_WEIGHT": "Media peso",
+    "START_TITLE": "Iniciar entrenamiento",
+    "SELECT_ROUTINE": "Selecciona una rutina",
+    "START_BUTTON": "Comenzar",
+    "ACTIVE_TITLE": "Entrenamiento activo",
+    "STARTED_AT": "Inicio",
+    "ACTIVE_ROUTINE_NOT_FOUND": "La rutina de este entrenamiento ya no existe o no está disponible.",
+    "SHOW_PHOTO": "Foto",
+    "HIDE_PHOTO": "Ocultar foto",
+    "WEIGHT_KG": "Peso (kg)",
+    "WEIGHT_PLACEHOLDER": "Ej. 60",
+    "DISTANCE_M": "Distancia (m)",
+    "DISTANCE_PLACEHOLDER": "Ej. 400",
+    "DURATION_SEC": "Tiempo (s)",
+    "DURATION_PLACEHOLDER": "Ej. 45",
+    "ADD_SET": "Añadir serie",
+    "FINISH_BUTTON": "Finalizar entrenamiento",
+    "ERROR_USER": "No hay sesión activa.",
+    "ERROR_SELECT_ROUTINE": "Selecciona una rutina para empezar.",
+    "ERROR_START": "No se pudo iniciar el entrenamiento.",
+    "ERROR_SET_VALUES": "Indica un peso o un tiempo válidos.",
+    "ERROR_ADD_SET": "No se pudo añadir la serie.",
+    "ERROR_FINISH": "No se pudo finalizar el entrenamiento.",
+    "ERROR_LOAD": "No se pudieron cargar los datos de entrenamientos."
+  },
+  "TRAINING_HISTORY": {
+    "TITLE": "Histórico de entrenamientos",
+    "EMPTY": "Aún no hay entrenamientos registrados.",
+    "SHOW_PHOTO": "Foto",
+    "HIDE_PHOTO": "Ocultar foto",
+    "ERROR_USER": "No hay sesión activa.",
+    "ERROR_LOAD": "No se pudo cargar el histórico."
   },
   "LANG": {
     "ES": "Español",
@@ -61,5 +162,9 @@
     "EL": "Ελληνικά",
     "HI": "हिन्दी",
     "KO": "한국어"
+  },
+  "FOLDER": {
+    "EXPLORE": "Explora",
+    "UI_COMPONENTS": "Componentes UI"
   }
 }

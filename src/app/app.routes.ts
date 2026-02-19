@@ -30,4 +30,28 @@ export const routes: Routes = [
       import('./components/create-routine/create-routine.page').then((m) => m.CreateRoutinePage),
     canActivate: [authGuard],
   },
+  {
+    path: 'create-routine/:id',
+    loadComponent: () =>
+      import('./components/create-routine/create-routine.page').then((m) => m.CreateRoutinePage),
+    canActivate: [authGuard],
+  },
+  {
+    path: 'my-routines',
+    loadComponent: () =>
+      import('./components/my-routines/my-routines.page').then((m) => m.MyRoutinesPage),
+    canActivate: [authGuard],
+  },
+  {
+    path: 'trainings',
+    loadComponent: () =>
+      import('./components/trainings/trainings.page').then((m) => m.TrainingsPage),
+    canActivate: [authGuard],
+  },
+  {
+    path: 'training-history',
+    loadComponent: () =>
+      import('./components/training-history/training-history.page').then((m) => m.TrainingHistoryPage),
+    canActivate: [authGuard],
+  },
 ];

@@ -1,0 +1,85 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ 'ROUTINES.TITLE' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="routines-container">
+    <ion-button expand="block" class="create-btn" (click)="goToCreateRoutine()">
+      {{ 'ROUTINES.CREATE_NEW' | translate }}
+    </ion-button>
+
+    @if (errorMessage) {
+      <ion-text color="danger">
+        <p class="error-message">{{ errorMessage | translate }}</p>
+      </ion-text>
+    }
+
+    @if (loading) {
+      <div class="loading-block">
+        <ion-spinner name="crescent"></ion-spinner>
+      </div>
+    } @else if (routines.length === 0) {
+      <p class="empty-state">{{ 'ROUTINES.EMPTY' | translate }}</p>
+    } @else {
+      <div class="routine-list">
+        @for (routine of routines; track routine.id) {
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>{{ routine.name }}</ion-card-title>
+              @if (routine.description) {
+                <ion-card-subtitle>{{ routine.description }}</ion-card-subtitle>
+              }
+            </ion-card-header>
+            <ion-card-content>
+              <p class="exercise-count">
+                {{ 'ROUTINES.EXERCISE_COUNT' | translate }}: {{ routine.exercises.length }}
+              </p>
+              <div class="card-actions">
+                <ion-button size="small" fill="outline" (click)="toggleRoutineDetails(routine.id)">
+                  {{ (isDetailsVisible(routine.id) ? 'ROUTINES.HIDE_EXERCISES' : 'ROUTINES.SHOW_EXERCISES') | translate }}
+                </ion-button>
+                <ion-button size="small" fill="outline" (click)="goToEditRoutine(routine.id)">
+                  {{ 'ROUTINES.EDIT' | translate }}
+                </ion-button>
+                <ion-button size="small" fill="outline" color="danger" (click)="deleteRoutine(routine.id)">
+                  {{ 'ROUTINES.DELETE' | translate }}
+                </ion-button>
+              </div>
+
+              @if (isDetailsVisible(routine.id)) {
+                <div class="exercise-list">
+                  @for (exercise of routine.exercises; track exercise.id) {
+                    <div class="exercise-item">
+                      <div class="exercise-main">
+                        <strong>{{ exercise.name }}</strong>
+                        <p class="exercise-type">{{ ('TRAININGS.EXERCISE_TYPE_' + exercise.exerciseType) | translate }}</p>
+                        @if (exercise.description) {
+                          <p>{{ exercise.description }}</p>
+                        }
+                      </div>
+                      @if (exercise.photoUrl) {
+                        <ion-button size="small" fill="clear" (click)="togglePhoto(exercise)">
+                          {{ (isPhotoVisible(exercise.id) ? 'ROUTINES.HIDE_PHOTO' : 'ROUTINES.SHOW_PHOTO') | translate }}
+                        </ion-button>
+                      }
+                      @if (exercise.photoUrl && isPhotoVisible(exercise.id)) {
+                        <div class="photo-wrapper">
+                          <img [src]="exercise.photoUrl" [alt]="exercise.name" />
+                        </div>
+                      }
+                    </div>
+                  }
+                </div>
+              }
+            </ion-card-content>
+          </ion-card>
+        }
+      </div>
+    }
+  </div>
+</ion-content>

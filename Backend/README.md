@@ -71,6 +71,21 @@ DATABASE_URL="postgresql://gymtrack:gymtrack@localhost:5432/gymtrack?schema=publ
 | GET | `/api/users` | Lista usuarios (query `email`) |
 | GET | `/api/users/:id` | Usuario por id |
 | POST | `/api/users` | Crear/reinsertar usuario (backup) |
+| GET | `/api/routines?userId=...` | Lista rutinas del usuario |
+| POST | `/api/routines` | Crear rutina con ejercicios |
+| GET | `/api/routines/:id?userId=...` | Obtener rutina por id |
+| PATCH | `/api/routines/:id` | Editar rutina completa |
+| DELETE | `/api/routines/:id?userId=...` | Eliminar rutina |
+| GET | `/api/trainings?userId=...` | Histórico de entrenamientos |
+| GET | `/api/trainings?userId=...&active=true` | Entrenamiento activo |
+| POST | `/api/trainings` | Iniciar entrenamiento desde rutina |
+| PATCH | `/api/trainings/:id` | Finalizar entrenamiento |
+| POST | `/api/trainings/:id/sets` | Añadir serie (peso y/o tiempo) |
+| GET | `/api/trainings/stats?userId=...` | Media global (series/peso/tiempo) |
+| GET | `/api/trainings/exercise-stats?userId=...&routineId=...` | Media histórica por ejercicio de una rutina |
+| POST | `/api/uploads` | Subir imagen real de ejercicio (multipart/form-data, `file`) |
+
+Las imágenes se guardan en `Backend/public/uploads` y se sirven en `/uploads/...`.
 
 ## Troubleshooting
 

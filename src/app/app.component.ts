@@ -37,7 +37,13 @@ import { LANGUAGES } from './services/translate.service';
   ],
 })
 export class AppComponent {
-  readonly appPages = [{ titleKey: 'MENU.HOME', url: 'start', icon: 'mail' }];
+  readonly appPages = [
+    { titleKey: 'MENU.HOME', url: 'start', icon: 'mail' },
+    { titleKey: 'MENU.MY_ROUTINES', url: 'my-routines', icon: 'paper-plane' },
+    { titleKey: 'MENU.CREATE_ROUTINE', url: 'create-routine', icon: 'bookmark' },
+    { titleKey: 'MENU.TRAININGS', url: 'trainings', icon: 'heart' },
+    { titleKey: 'MENU.TRAINING_HISTORY', url: 'training-history', icon: 'archive' },
+  ];
   readonly languages = LANGUAGES;
   public labels: string[] = [];
   /** Solo se muestra la app cuando la BD y la sesión están listas. */

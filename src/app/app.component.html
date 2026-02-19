@@ -41,6 +41,7 @@
         [value]="translateService.getCurrentLanguage()"
         (ionChange)="translateService.setLanguage($any($event).detail.value)"
         interface="popover"
+        [attr.aria-label]="'COMMON.LANGUAGE' | translate"
         class="lang-float-select"
       >
         @for (lang of languages; track lang.code) {

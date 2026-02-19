@@ -23,3 +23,81 @@ ion-header[collapse='condense'] ion-title {
   letter-spacing: 0.02em;
   color: var(--ion-color-primary);
 }
+
+.routine-form {
+  width: min(760px, 100%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+}
+
+ion-item {
+  --background: rgba(var(--ion-color-primary-rgb), 0.09);
+  --border-radius: 12px;
+  --padding-start: 12px;
+  --inner-padding-end: 12px;
+  border: 1px solid rgba(var(--ion-color-primary-rgb), 0.24);
+  border-radius: 12px;
+}
+
+.section-title {
+  margin: 0.6rem 0 0.2rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ion-color-primary);
+}
+
+.exercise-card {
+  padding: 0.8rem;
+  border-radius: 14px;
+  border: 1px solid rgba(var(--ion-color-secondary-rgb), 0.24);
+  background: linear-gradient(
+    145deg,
+    rgba(var(--ion-color-primary-rgb), 0.1),
+    rgba(var(--ion-color-secondary-rgb), 0.1)
+  );
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.exercise-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.exercise-actions ion-spinner {
+  margin-right: 0.35rem;
+}
+
+.photo-wrapper {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(var(--ion-color-primary-rgb), 0.28);
+}
+
+.photo-wrapper img {
+  width: 100%;
+  max-height: 240px;
+  object-fit: cover;
+  display: block;
+}
+
+.error-message {
+  margin: 0.2rem 0 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.save-btn {
+  margin-top: 0.5rem;
+  --background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-secondary));
+  --background-hover: linear-gradient(135deg, var(--ion-color-primary-shade), var(--ion-color-secondary-shade));
+  --border-radius: 12px;
+  --box-shadow: 0 12px 24px rgba(var(--ion-color-primary-rgb), 0.24);
+  font-weight: 700;
+}

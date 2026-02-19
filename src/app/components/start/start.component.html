@@ -18,7 +18,7 @@
       {{ 'START.ROUTINES' | translate }}
     </p>
     <div class="buttonContainer">
-      <button class="buttonMenu">{{ 'START.YOUR_ROUTINES' | translate }}</button>
+      <button class="buttonMenu" (click)="goTo('my-routines')">{{ 'START.YOUR_ROUTINES' | translate }}</button>
       <button class="buttonMenu" (click)="goTo('create-routine')">{{ 'START.CREATE_ROUTINE' | translate }}</button>
     </div>
     <br>
@@ -26,8 +26,8 @@
       {{ 'START.TRAININGS' | translate }}
     </p>
     <div class="buttonContainer">
-      <button class="buttonMenu">{{ 'START.START_TRAINING' | translate }}</button>
-      <button class="buttonMenu">{{ 'START.TRAINING_HISTORY' | translate }}</button>
+      <button class="buttonMenu" (click)="goTo('trainings')">{{ 'START.START_TRAINING' | translate }}</button>
+      <button class="buttonMenu" (click)="goTo('training-history')">{{ 'START.TRAINING_HISTORY' | translate }}</button>
     </div>
   </ng-container>
 

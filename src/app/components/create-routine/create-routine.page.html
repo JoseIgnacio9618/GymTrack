@@ -1,13 +1,128 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>{{ 'CREATE_ROUTINE.TITLE' | translate }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ titleKey | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">{{ 'CREATE_ROUTINE.TITLE' | translate }}</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="routine-form">
+    <ion-item>
+      <ion-label position="stacked">{{ 'CREATE_ROUTINE.ROUTINE_NAME' | translate }}</ion-label>
+      <ion-input
+        [(ngModel)]="routineName"
+        [placeholder]="'CREATE_ROUTINE.ROUTINE_NAME_PLACEHOLDER' | translate"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">{{ 'CREATE_ROUTINE.DESCRIPTION' | translate }}</ion-label>
+      <ion-textarea
+        autoGrow="true"
+        [(ngModel)]="routineDescription"
+        [placeholder]="'CREATE_ROUTINE.DESCRIPTION_PLACEHOLDER' | translate"
+      ></ion-textarea>
+    </ion-item>
+
+    <p class="section-title">{{ 'CREATE_ROUTINE.EXERCISES' | translate }}</p>
+
+    @for (exercise of exercises; track $index; let i = $index) {
+      <div class="exercise-card">
+        <ion-item>
+          <ion-label position="stacked">{{ 'CREATE_ROUTINE.EXERCISE_NAME' | translate }} #{{ i + 1 }}</ion-label>
+          <ion-input
+            [(ngModel)]="exercise.name"
+            [placeholder]="'CREATE_ROUTINE.EXERCISE_NAME_PLACEHOLDER' | translate"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">{{ 'CREATE_ROUTINE.EXERCISE_TYPE' | translate }}</ion-label>
+          <ion-select
+            [(ngModel)]="exercise.exerciseType"
+            [cancelText]="'COMMON.CANCEL' | translate"
+            [okText]="'COMMON.ACCEPT' | translate"
+          >
+            @for (option of exerciseTypeOptions; track option.value) {
+              <ion-select-option [value]="option.value">{{ option.labelKey | translate }}</ion-select-option>
+            }
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">{{ 'CREATE_ROUTINE.EXERCISE_DESC' | translate }}</ion-label>
+          <ion-input
+            [(ngModel)]="exercise.description"
+            [placeholder]="'CREATE_ROUTINE.EXERCISE_DESC_PLACEHOLDER' | translate"
+          ></ion-input>
+        </ion-item>
+
+        <div class="exercise-actions">
+          <ion-button
+            fill="outline"
+            size="small"
+            [disabled]="saving || uploadingPhotoIndex === i"
+            (click)="uploadPhotoFromCamera(i)"
+          >
+            @if (uploadingPhotoIndex === i) {
+              <ion-spinner name="crescent"></ion-spinner>
+            }
+            {{ 'CREATE_ROUTINE.TAKE_PHOTO' | translate }}
+          </ion-button>
+          <ion-button
+            fill="outline"
+            size="small"
+            [disabled]="saving || uploadingPhotoIndex === i"
+            (click)="uploadPhotoFromGallery(i)"
+          >
+            @if (uploadingPhotoIndex === i) {
+              <ion-spinner name="crescent"></ion-spinner>
+            }
+            {{ 'CREATE_ROUTINE.CHOOSE_PHOTO' | translate }}
+          </ion-button>
+          @if (exercise.photoUrl) {
+            <ion-button fill="outline" size="small" (click)="togglePhoto(i)">
+              {{ (exercise.showPhoto ? 'CREATE_ROUTINE.HIDE_PHOTO' : 'CREATE_ROUTINE.SHOW_PHOTO') | translate }}
+            </ion-button>
+            <ion-button fill="outline" size="small" color="warning" (click)="removePhoto(i)">
+              {{ 'CREATE_ROUTINE.REMOVE_PHOTO' | translate }}
+            </ion-button>
+          }
+          <ion-button fill="outline" size="small" color="danger" (click)="removeExercise(i)">
+            {{ 'CREATE_ROUTINE.REMOVE_EXERCISE' | translate }}
+          </ion-button>
+        </div>
+
+        @if (exercise.showPhoto && exercise.photoUrl) {
+          <div class="photo-wrapper">
+            <img [src]="exercise.photoUrl" [alt]="exercise.name || 'exercise-photo'" />
+          </div>
+        }
+      </div>
+    }
+
+    <ion-button expand="block" fill="outline" (click)="addExercise()">
+      {{ 'CREATE_ROUTINE.ADD_EXERCISE' | translate }}
+    </ion-button>
+
+    @if (errorMessage) {
+      <ion-text color="danger">
+        <p class="error-message">{{ errorMessage | translate }}</p>
+      </ion-text>
+    }
+
+    <ion-button
+      class="save-btn"
+      expand="block"
+      [disabled]="loading || saving"
+      (click)="saveRoutine()"
+    >
+      @if (saving) {
+        <ion-spinner name="crescent"></ion-spinner>
+      }
+      {{ (isEditMode ? 'CREATE_ROUTINE.UPDATE' : 'CREATE_ROUTINE.SAVE') | translate }}
+    </ion-button>
+  </div>
 </ion-content>

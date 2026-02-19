@@ -1,12 +1,18 @@
 {
   "COMMON": {
     "LOADING": "Chargement...",
-    "LANGUAGE": "Langue"
+    "LANGUAGE": "Langue",
+    "CANCEL": "Annuler",
+    "ACCEPT": "Accepter"
   },
   "MENU": {
     "TITLE": "Menu",
     "HOME": "Accueil",
-    "LOGOUT": "Déconnexion"
+    "LOGOUT": "Déconnexion",
+    "MY_ROUTINES": "Vos routines",
+    "CREATE_ROUTINE": "Créer une routine",
+    "TRAININGS": "Formations",
+    "TRAINING_HISTORY": "Histoire"
   },
   "AUTH": {
     "APP_TITLE": "GymTrack",
@@ -40,7 +46,39 @@
     "TRAINING_HISTORY": "Historique des entraînements"
   },
   "CREATE_ROUTINE": {
-    "TITLE": "Créer une routine"
+    "TITLE": "Créer une routine",
+    "EDIT_TITLE": "Modifier la routine",
+    "ROUTINE_NAME": "Nom de la routine",
+    "ROUTINE_NAME_PLACEHOLDER": "par ex. Poussée supérieure",
+    "DESCRIPTION": "Description",
+    "DESCRIPTION_PLACEHOLDER": "Facultatif",
+    "EXERCISES": "Exercices",
+    "EXERCISE_NAME": "Exercice",
+    "EXERCISE_NAME_PLACEHOLDER": "par ex. Développé couché",
+    "EXERCISE_TYPE": "Type d'exercice",
+    "EXERCISE_TYPE_WEIGHT": "Poids",
+    "EXERCISE_TYPE_DURATION": "Résistance (temps)",
+    "EXERCISE_TYPE_DISTANCE_TIME": "Distance + temps",
+    "EXERCISE_TYPE_CHRONO": "Chrono",
+    "EXERCISE_DESC": "Notes d'exercice",
+    "EXERCISE_DESC_PLACEHOLDER": "Facultatif",
+    "PHOTO_URL": "URL de la photo de la machine",
+    "PHOTO_URL_PLACEHOLDER": "https://...",
+    "TAKE_PHOTO": "Prendre une photo",
+    "CHOOSE_PHOTO": "Choisir une photo",
+    "REMOVE_PHOTO": "Supprimer la photo",
+    "ADD_EXERCISE": "Ajouter un exercice",
+    "REMOVE_EXERCISE": "Supprimer l'exercice",
+    "SHOW_PHOTO": "Photo",
+    "HIDE_PHOTO": "Masquer la photo",
+    "SAVE": "Enregistrer la routine",
+    "UPDATE": "Routine de mise à jour",
+    "ERROR_USER": "Aucune session active.",
+    "ERROR_NAME": "Le nom de la routine est requis (min. 2 caractères).",
+    "ERROR_EXERCISE": "Ajoutez au moins un exercice avec un nom.",
+    "ERROR_UPLOAD_PHOTO": "Impossible de capturer ou de télécharger la photo.",
+    "LOAD_ERROR": "Impossible de charger la routine.",
+    "SAVE_ERROR": "Impossible de sauvegarder la routine."
   },
   "LANG": {
     "ES": "Español",
@@ -61,5 +99,72 @@
     "EL": "Ελληνικά",
     "HI": "हिन्दी",
     "KO": "한국어"
+  },
+  "ROUTINES": {
+    "TITLE": "Vos routines",
+    "CREATE_NEW": "Créer une nouvelle routine",
+    "EMPTY": "Vous n'avez pas encore créé de routine.",
+    "EXERCISE_COUNT": "Exercices",
+    "SHOW_EXERCISES": "Afficher les exercices",
+    "HIDE_EXERCISES": "Masquer les exercices",
+    "EDIT": "Modifier",
+    "DELETE": "Supprimer",
+    "SHOW_PHOTO": "Photo",
+    "HIDE_PHOTO": "Masquer la photo",
+    "ERROR_USER": "Aucune session active.",
+    "ERROR_LOAD": "Impossible de charger les routines.",
+    "ERROR_DELETE": "Impossible de supprimer la routine.",
+    "CONFIRM_DELETE": "Êtes-vous sûr de vouloir supprimer cette routine ?"
+  },
+  "TRAININGS": {
+    "TITLE": "Formations",
+    "STATS_TITLE": "Moyennes mondiales",
+    "EXERCISE_TYPE_WEIGHT": "Poids",
+    "EXERCISE_TYPE_DURATION": "Résistance au temps",
+    "EXERCISE_TYPE_DISTANCE_TIME": "Distance et temps",
+    "EXERCISE_TYPE_CHRONO": "Chrono",
+    "AVG_SETS_PER_TRAINING": "Séries moyennes par entraînement",
+    "AVG_WEIGHT_EXERCISE": "Poids moyen historique",
+    "AVG_TIME_EXERCISE": "Temps moyen historique",
+    "AVG_DISTANCE_EXERCISE": "Distance moyenne historique",
+    "STAT_TOTAL_TRAININGS": "Formations",
+    "STAT_TOTAL_SETS": "Ensembles totaux",
+    "STAT_AVG_SETS": "Ensembles moyens",
+    "STAT_AVG_WEIGHT": "Poids moyen",
+    "START_TITLE": "Commencer la formation",
+    "SELECT_ROUTINE": "Sélectionnez une routine",
+    "START_BUTTON": "Commencer",
+    "ACTIVE_TITLE": "Entraînement actif",
+    "STARTED_AT": "Commencé",
+    "ACTIVE_ROUTINE_NOT_FOUND": "La routine de cette formation n'existe plus ou n'est pas disponible.",
+    "SHOW_PHOTO": "Photo",
+    "HIDE_PHOTO": "Masquer la photo",
+    "WEIGHT_KG": "Poids (kg)",
+    "WEIGHT_PLACEHOLDER": "par ex. 60",
+    "DISTANCE_M": "Distance (m)",
+    "DISTANCE_PLACEHOLDER": "par ex. 400",
+    "DURATION_SEC": "Temps (s)",
+    "DURATION_PLACEHOLDER": "par ex. 45",
+    "ADD_SET": "Ajouter un ensemble",
+    "FINISH_BUTTON": "Terminer la formation",
+    "ERROR_USER": "Aucune session active.",
+    "ERROR_SELECT_ROUTINE": "Sélectionnez une routine pour démarrer.",
+    "ERROR_START": "Impossible de démarrer l'entraînement.",
+    "ERROR_SET_VALUES": "Fournissez un poids ou une durée valide.",
+    "ERROR_ADD_SET": "Impossible d'ajouter l'ensemble.",
+    "ERROR_FINISH": "Impossible de terminer la formation.",
+    "ERROR_LOAD": "Impossible de charger les données d'entraînement."
+  },
+  "TRAINING_HISTORY": {
+    "TITLE": "Historique de la formation",
+    "EMPTY": "Aucune séance d'entraînement enregistrée pour l'instant.",
+    "SHOW_PHOTO": "Photo",
+    "HIDE_PHOTO": "Masquer la photo",
+    "ERROR_USER": "Aucune session active.",
+    "ERROR_LOAD": "Impossible de charger l'historique."
+  },
+  "FOLDER": {
+    "EXPLORE": "Explorer",
+    "UI_COMPONENTS": "Composants de l'interface utilisateur"
   }
 }

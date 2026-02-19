@@ -1,0 +1,210 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ 'TRAININGS.TITLE' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="training-container">
+    @if (errorMessage) {
+      <ion-text color="danger">
+        <p class="error-message">{{ errorMessage | translate }}</p>
+      </ion-text>
+    }
+
+    @if (loading) {
+      <div class="loading-block">
+        <ion-spinner name="crescent"></ion-spinner>
+      </div>
+    } @else if (!activeTraining) {
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>{{ 'TRAININGS.START_TITLE' | translate }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item>
+            <ion-label>{{ 'TRAININGS.SELECT_ROUTINE' | translate }}</ion-label>
+            <ion-select
+              [(ngModel)]="selectedRoutineId"
+              [cancelText]="'COMMON.CANCEL' | translate"
+              [okText]="'COMMON.ACCEPT' | translate"
+            >
+              @for (routine of routines; track routine.id) {
+                <ion-select-option [value]="routine.id">{{ routine.name }}</ion-select-option>
+              }
+            </ion-select>
+          </ion-item>
+
+          <ion-button
+            class="action-btn"
+            expand="block"
+            [disabled]="submitting || routines.length === 0"
+            (click)="startTraining()"
+          >
+            {{ 'TRAININGS.START_BUTTON' | translate }}
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    } @else {
+      <ion-card class="active-card">
+        <ion-card-header>
+          <ion-card-title>{{ 'TRAININGS.ACTIVE_TITLE' | translate }}: {{ activeTraining.routineNameSnapshot }}</ion-card-title>
+          <ion-card-subtitle>
+            {{ 'TRAININGS.STARTED_AT' | translate }}: {{ activeTraining.startedAt | date: 'dd/MM/yyyy HH:mm' }}
+          </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          @if (!activeRoutine) {
+            <p class="empty-state">{{ 'TRAININGS.ACTIVE_ROUTINE_NOT_FOUND' | translate }}</p>
+          } @else {
+            <div class="exercise-training-list">
+              @for (exercise of activeRoutine.exercises; track exercise.id) {
+                <div class="exercise-training-item">
+                  <div class="exercise-header">
+                    <div>
+                      <strong>{{ exercise.name }}</strong>
+                      <p class="exercise-type">{{ getExerciseTypeLabel(exercise) | translate }}</p>
+                      @if (exercise.description) {
+                        <p>{{ exercise.description }}</p>
+                      }
+                    </div>
+                    @if (exercise.photoUrl) {
+                      <ion-button size="small" fill="clear" (click)="togglePhoto(exercise.id)">
+                        {{ (isPhotoVisible(exercise.id) ? 'TRAININGS.HIDE_PHOTO' : 'TRAININGS.SHOW_PHOTO') | translate }}
+                      </ion-button>
+                    }
+                  </div>
+
+                  <div class="exercise-avg">
+                    <p>
+                      {{ 'TRAININGS.AVG_SETS_PER_TRAINING' | translate }}:
+                      <strong>{{ getExerciseStats(exercise).avgSetsPerTraining | number: '1.0-2' }}</strong>
+                    </p>
+                    @if (exercise.exerciseType === 'WEIGHT') {
+                      <p>
+                        {{ 'TRAININGS.AVG_WEIGHT_EXERCISE' | translate }}:
+                        <strong>{{ getExerciseStats(exercise).avgWeightKg ?? 0 | number: '1.0-2' }} kg</strong>
+                      </p>
+                    }
+                    @if (exercise.exerciseType === 'DURATION' || exercise.exerciseType === 'CHRONO') {
+                      <p>
+                        {{ 'TRAININGS.AVG_TIME_EXERCISE' | translate }}:
+                        <strong>{{ getExerciseStats(exercise).avgDurationSec ?? 0 | number: '1.0-0' }} s</strong>
+                      </p>
+                    }
+                    @if (exercise.exerciseType === 'DISTANCE_TIME') {
+                      <p>
+                        {{ 'TRAININGS.AVG_DISTANCE_EXERCISE' | translate }}:
+                        <strong>{{ getExerciseStats(exercise).avgDistanceMeters ?? 0 | number: '1.0-2' }} m</strong>
+                      </p>
+                      <p>
+                        {{ 'TRAININGS.AVG_TIME_EXERCISE' | translate }}:
+                        <strong>{{ getExerciseStats(exercise).avgDurationSec ?? 0 | number: '1.0-0' }} s</strong>
+                      </p>
+                    }
+                  </div>
+
+                  @if (exercise.photoUrl && isPhotoVisible(exercise.id)) {
+                    <div class="photo-wrapper">
+                      <img [src]="exercise.photoUrl" [alt]="exercise.name" />
+                    </div>
+                  }
+
+                  <div class="set-inputs">
+                    @if (exercise.exerciseType === 'WEIGHT') {
+                      <ion-item>
+                        <ion-label position="stacked">{{ 'TRAININGS.WEIGHT_KG' | translate }}</ion-label>
+                        <ion-input
+                          type="number"
+                          min="0"
+                          step="0.25"
+                          [(ngModel)]="setInputs[exercise.id].weightKg"
+                          [placeholder]="'TRAININGS.WEIGHT_PLACEHOLDER' | translate"
+                        ></ion-input>
+                      </ion-item>
+                    }
+
+                    @if (exercise.exerciseType === 'DURATION' || exercise.exerciseType === 'CHRONO') {
+                      <ion-item>
+                        <ion-label position="stacked">{{ 'TRAININGS.DURATION_SEC' | translate }}</ion-label>
+                        <ion-input
+                          type="number"
+                          min="0"
+                          step="1"
+                          [(ngModel)]="setInputs[exercise.id].durationSec"
+                          [placeholder]="'TRAININGS.DURATION_PLACEHOLDER' | translate"
+                        ></ion-input>
+                      </ion-item>
+                    }
+
+                    @if (exercise.exerciseType === 'DISTANCE_TIME') {
+                      <ion-item>
+                        <ion-label position="stacked">{{ 'TRAININGS.DISTANCE_M' | translate }}</ion-label>
+                        <ion-input
+                          type="number"
+                          min="0"
+                          step="0.1"
+                          [(ngModel)]="setInputs[exercise.id].distanceMeters"
+                          [placeholder]="'TRAININGS.DISTANCE_PLACEHOLDER' | translate"
+                        ></ion-input>
+                      </ion-item>
+                      <ion-item>
+                        <ion-label position="stacked">{{ 'TRAININGS.DURATION_SEC' | translate }}</ion-label>
+                        <ion-input
+                          type="number"
+                          min="0"
+                          step="1"
+                          [(ngModel)]="setInputs[exercise.id].durationSec"
+                          [placeholder]="'TRAININGS.DURATION_PLACEHOLDER' | translate"
+                        ></ion-input>
+                      </ion-item>
+                    }
+                  </div>
+
+                  <ion-button
+                    fill="outline"
+                    size="small"
+                    [disabled]="submitting"
+                    (click)="addSet(exercise)"
+                  >
+                    {{ 'TRAININGS.ADD_SET' | translate }} ({{ getSetsForExercise(exercise) }})
+                  </ion-button>
+
+                  <div class="sets-history">
+                    @for (set of getExerciseSets(exercise); track set.id) {
+                      <div class="set-row">
+                        <span>#{{ set.setNumber }}</span>
+                        @if (set.exerciseTypeSnapshot === 'WEIGHT') {
+                          <span>{{ set.weightKg ?? '-' }} kg</span>
+                        }
+                        @if (set.exerciseTypeSnapshot === 'DURATION' || set.exerciseTypeSnapshot === 'CHRONO') {
+                          <span>{{ set.durationSec ?? '-' }} s</span>
+                        }
+                        @if (set.exerciseTypeSnapshot === 'DISTANCE_TIME') {
+                          <span>{{ set.distanceMeters ?? '-' }} m / {{ set.durationSec ?? '-' }} s</span>
+                        }
+                      </div>
+                    }
+                  </div>
+                </div>
+              }
+            </div>
+
+            <ion-button
+              class="finish-btn"
+              expand="block"
+              color="success"
+              [disabled]="submitting"
+              (click)="finishTraining()"
+            >
+              {{ 'TRAININGS.FINISH_BUTTON' | translate }}
+            </ion-button>
+          }
+        </ion-card-content>
+      </ion-card>
+    }
+  </div>
+</ion-content>
