@@ -1,90 +1,106 @@
 # GymTrack Backend (Next.js + Prisma + PostgreSQL)
 
-API para la app GymTrack. Base de datos **PostgreSQL** con **Prisma**.
+API para GymTrack usando PostgreSQL con Prisma.
 
----
+## Quick start
 
-## Si ves: "Can't reach database server at localhost:5432"
-
-Ese error significa que **PostgreSQL no está corriendo**. Tienes que hacer esto **antes** de usar la app o `npm run dev`:
-
-1. **Abre Docker Desktop** (en Windows, búscalo en el menú inicio). Espera a que esté en marcha (icono de la ballena en la bandeja).
-2. Abre una terminal, ve a la carpeta del backend y levanta la base de datos:
+1. Entra en la carpeta `Backend`.
+2. Crea variables de entorno (si no existe `.env`):
    ```bash
-   cd backend
+   copy .env.example .env
+   ```
+   En PowerShell tambien puedes usar:
+   ```powershell
+   Copy-Item .env.example .env
+   ```
+3. Levanta PostgreSQL con Docker:
+   ```bash
    docker compose up -d
    ```
-3. Crea las tablas en la base de datos (solo la primera vez, o si cambias el schema):
+4. Instala dependencias:
+   ```bash
+   npm install
+   ```
+5. Genera cliente Prisma:
+   ```bash
+   npm run db:generate
+   ```
+6. Aplica migraciones:
    ```bash
    npm run db:migrate
    ```
-4. Arranca el backend:
+7. Arranca backend:
    ```bash
    npm run dev
    ```
 
-Si no tienes Docker instalado, instálalo desde [docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop/). Sin Docker (o sin PostgreSQL instalado en el sistema), el backend no puede conectar a la base de datos.
-
----
+API: `http://localhost:3000/api`
 
 ## Requisitos
 
 - Node.js 18+
-- Docker (para PostgreSQL en desarrollo)
+- Docker Desktop (Windows/macOS) o Docker Engine
 
-## Instalación
+## Variables de entorno
 
-### 1. Levantar PostgreSQL
+Archivo `.env`:
 
-Desde la carpeta `backend`:
-
-```bash
-docker compose up -d
+```env
+DATABASE_URL="postgresql://gymtrack:gymtrack@localhost:5432/gymtrack?schema=public"
 ```
-
-(Abre Docker Desktop antes si usas Windows.)
-
-### 2. Variables de entorno
-
-El archivo `.env` ya tiene la URL por defecto. Si cambias usuario/contraseña en Docker, actualiza `DATABASE_URL`.
-
-### 3. Dependencias y migraciones
-
-```bash
-cd backend
-npm install
-npm run db:generate
-npm run db:migrate
-```
-
-### 4. Desarrollo
-
-```bash
-npm run dev
-```
-
-API en `http://localhost:3000`. La app Ionic usa `apiUrl: 'http://localhost:3000/api'`.
 
 ## Scripts
 
-| Comando | Descripción |
-|--------|-------------|
-| `npm run db:generate` | Genera el cliente Prisma |
-| `npm run db:migrate` | Crea/aplica migraciones (desarrollo) |
-| `npm run db:migrate:deploy` | Aplica migraciones (producción) |
-| `npm run db:studio` | Abre Prisma Studio para ver la BD |
+| Comando | Uso |
+|---|---|
+| `npm run dev` | Levanta Next en desarrollo |
+| `npm run build` | Build de Next (sin regenerar Prisma) |
+| `npm run build:full` | `prisma generate` + build completo |
+| `npm run db:generate` | Genera cliente Prisma |
+| `npm run db:migrate` | Crea/aplica migraciones en desarrollo |
+| `npm run db:migrate:deploy` | Aplica migraciones en produccion |
+| `npm run db:push` | Sincroniza schema sin migracion |
+| `npm run db:studio` | Abre Prisma Studio |
 
 ## Endpoints
 
-| Método | Ruta | Descripción |
-|--------|------|-------------|
-| POST | `/api/auth/login` | Login. Body: `{ "email", "password" }` |
-| POST | `/api/auth/register` | Registro. Body: `{ "name", "email", "password" }` |
-| GET | `/api/users` | Lista usuarios. Query: `?email=...` |
+| Metodo | Ruta | Descripcion |
+|---|---|---|
+| POST | `/api/auth/login` | Login (`email`, `password`) |
+| POST | `/api/auth/register` | Registro (`name`, `email`, `password`) |
+| GET | `/api/users` | Lista usuarios (query `email`) |
 | GET | `/api/users/:id` | Usuario por id |
 | POST | `/api/users` | Crear/reinsertar usuario (backup) |
 
-## Ver la base de datos
+## Troubleshooting
 
-- **Prisma Studio:** `npm run db:studio` (abre en el navegador).
-- **DBeaver / pgAdmin:** Host `localhost`, puerto `5432`, base `gymtrack`, usuario `gymtrack`, contraseña `gymtrack`.
+### Error: `Environment variable not found: DATABASE_URL`
+
+No existe `.env` o no tiene `DATABASE_URL`.
+
+Solucion:
+1. `Copy-Item .env.example .env`
+2. Verifica `DATABASE_URL`.
+
+### Error: `Can't reach database server at localhost:5432`
+
+PostgreSQL no esta corriendo.
+
+Solucion:
+1. Abre Docker Desktop.
+2. Ejecuta `docker compose up -d`.
+3. Reintenta `npm run db:migrate`.
+
+### Error en Windows: `EPERM ... query_engine-windows.dll.node`
+
+El engine de Prisma esta bloqueado por otro proceso.
+
+Solucion:
+1. Cierra procesos Node/Next/Prisma abiertos.
+2. Reintenta `npm run db:generate`.
+3. Si persiste, reinicia terminal/IDE o Windows.
+
+## Notas
+
+- `.env` esta en `.gitignore` y no se versiona.
+- `docker-compose.yml` crea la DB `gymtrack` con user/pass `gymtrack`.
