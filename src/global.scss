@@ -35,3 +35,79 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+ion-app {
+  min-height: 100%;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ion-content {
+  --background:
+    radial-gradient(
+      1400px circle at 0% -20%,
+      rgba(var(--ion-color-primary-rgb), 0.16) 0%,
+      transparent 45%
+    ),
+    radial-gradient(
+      900px circle at 100% 130%,
+      rgba(var(--ion-color-secondary-rgb), 0.14) 0%,
+      transparent 48%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(var(--ion-color-tertiary-rgb), 0.05) 0%,
+      var(--ion-background-color) 38%
+    );
+}
+
+ion-toolbar {
+  --background: linear-gradient(
+      120deg,
+      rgba(var(--ion-color-primary-rgb), 0.09),
+      rgba(var(--ion-color-secondary-rgb), 0.08)
+    ),
+    var(--ion-background-color);
+  --border-color: rgba(var(--ion-color-primary-rgb), 0.22);
+  backdrop-filter: saturate(130%) blur(10px);
+}
+
+ion-title {
+  letter-spacing: 0.02em;
+  font-weight: 700;
+}
+
+ion-button,
+button,
+ion-item,
+ion-segment,
+ion-card {
+  transition: box-shadow 0.2s ease, transform 0.2s ease, background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+ion-button:focus-visible,
+button:focus-visible,
+ion-item:focus-visible,
+ion-segment-button:focus-visible {
+  outline: 2px solid rgba(var(--ion-color-primary-rgb), 0.75);
+  outline-offset: 2px;
+}
+
+ion-card {
+  border-radius: 16px;
+  border: 1px solid rgba(var(--ion-color-primary-rgb), 0.18);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}

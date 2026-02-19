@@ -1,0 +1,25 @@
+:host {
+  display: block;
+}
+
+ion-toolbar {
+  --background: rgba(var(--ion-color-primary-rgb), 0.08);
+  --border-color: rgba(var(--ion-color-primary-rgb), 0.24);
+}
+
+ion-content {
+  --background:
+    radial-gradient(700px circle at 0% 0%, rgba(var(--ion-color-primary-rgb), 0.14) 0%, transparent 55%),
+    radial-gradient(640px circle at 100% 100%, rgba(var(--ion-color-secondary-rgb), 0.13) 0%, transparent 60%),
+    var(--ion-background-color);
+}
+
+ion-header[collapse='condense'] ion-toolbar {
+  --background: transparent;
+}
+
+ion-header[collapse='condense'] ion-title {
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--ion-color-primary);
+}
